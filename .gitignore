@@ -1,0 +1,9 @@
+venv
+__pycache__
+.vscode
+test*
+Notes.txt
+.webassets-cache
+migrations
+instance
+data/cache.db
