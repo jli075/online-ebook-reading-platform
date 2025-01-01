@@ -1,0 +1,11 @@
+Bootstrap-Flask
+Faker
+Flask-SQLAlchemy
+Flask
+Flask-Login
+Flask-WTF
+Flask-Migrate
+Flask-Assets
+python-dotenv
+email-validator
+SQLAlchemy

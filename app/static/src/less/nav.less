@@ -1,0 +1,57 @@
+@import "variable.less";
+
+nav {
+    background: #fff;
+    padding: 20px 0;
+    margin-bottom: 40px;
+    box-shadow: 0 0 5px #bec6cf;
+
+    .nav-wrapper {
+        width: 985px !important;
+        max-width: 88% !important;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 auto !important;
+
+        .left-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            a {
+                margin-right: 40px;
+
+                @media (max-width: 600px) {
+                    margin-right: 25px !important;
+                }
+            }
+
+            img {
+                width: 50px;
+                margin-right: 0;
+            }
+        }
+
+        a {
+            font-weight: 600;
+            color: #7d849a;
+
+            @media (max-width: 600px) {
+                font-size: .95em;
+            }
+        }
+    }
+
+    a {
+        color: #4d545d;
+        transition: @transition;
+        text-decoration: none;
+        font-size: 1.1em;
+
+        &:hover {
+            cursor: pointer;
+            opacity: .7;
+        }
+    }
+}

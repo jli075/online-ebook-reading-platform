@@ -1,0 +1,17 @@
+{% from 'bootstrap5/utils.html' import render_static %}
+{% from 'bootstrap5/form.html' import render_form %}
+{% extends "layout.jinja2" %}
+
+{% block pagestyles %}
+{% assets "profile_style_bundle" %}
+{{ render_static('css', ASSET_URL, local=False)}}
+{% endassets %}
+{% endblock %}
+
+{% block content %}
+{% include "navigation.jinja2" %}
+<div class="container">
+    <h1>Register</h1>
+    {{ render_form(form) }}
+</div>
+{% endblock %}

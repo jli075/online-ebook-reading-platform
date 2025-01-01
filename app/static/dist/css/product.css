@@ -1,0 +1,198 @@
+.product-template h1,
+.product-template h2,
+.product-template h3 {
+  padding: 10px;
+}
+.product-template button {
+  padding: 5px 10px;
+  font-size: 16px;
+}
+.product-template pre {
+  white-space: pre-wrap;
+  background: #f4f4f4;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+.product-template #prev {
+  left: 0;
+}
+.product-template #next {
+  right: 0;
+}
+.product-template .arrow {
+  position: fixed;
+  top: 50%;
+  margin-top: -32px;
+  font-size: 64px;
+  color: #E2E2E2;
+  font-family: arial, sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  text-decoration: none;
+}
+.product-template .arrow:hover,
+.product-template .navlink:hover {
+  color: #777;
+}
+.product-template .arrow:active,
+.product-template .navlink:hover {
+  color: #000;
+}
+.product-template .app-container {
+  display: grid;
+  grid-template-columns: 50px 0.5fr 2.2fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas: "activity-bar sidebar content-area";
+}
+.product-template .activity-bar {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1.6fr 0.25fr;
+  gap: 0px 0px;
+  grid-template-areas: "activity" "settings";
+  grid-area: "activity-bar";
+}
+.product-template .activity {
+  grid-area: "activity";
+}
+.product-template .settings {
+  grid-area: "settings";
+}
+.product-template .action-bar {
+  list-style: none;
+  padding: 0;
+}
+.product-template .action-bar .activity .action {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+.product-template .action-bar button.action:hover {
+  background: #5dbad7;
+  color: white;
+  opacity: 1;
+}
+.product-template .action-bar button.action:hover * {
+  color: white;
+}
+.product-template .action-bar .action.active {
+  background: #5dbad7;
+  color: white;
+  opacity: 1;
+}
+.product-template .action-bar .action.active * {
+  color: white;
+}
+.product-template .sidebar {
+  width: 200px;
+  position: relative;
+  grid-area: "sidebar";
+  box-shadow: 0 0 5px rgba(65, 67, 144, 0.15);
+}
+.product-template .no-select {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+.product-template .sidebar h2 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+.product-template .sidebarContent {
+  padding: 10px;
+}
+.product-template .content-area {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1.9fr 0.1fr;
+  gap: 0px 0px;
+  grid-template-areas: "pane-container" "footer";
+  grid-area: "content-area";
+  height: 100%;
+}
+.product-template .pane-container {
+  display: none;
+  grid-area: "pane-container";
+  height: calc(100% - 40px);
+}
+.product-template .pane-container.active {
+  display: block;
+  position: relative;
+  width: 100%;
+}
+.product-template .footer {
+  background-color: inherit;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  grid-area: "footer";
+}
+.product-template .toc-item {
+  margin-bottom: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 5px rgba(65, 67, 144, 0.15);
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  width: -webkit-fill-available;
+  font-weight: 500;
+  font-size: 1em;
+  line-height: 1.3;
+  cursor: pointer;
+}
+.product-template .toc-item:hover {
+  background: #5dbad7;
+  color: white;
+  opacity: 1;
+}
+.product-template #toc {
+  height: 400px;
+  overflow-y: auto;
+}
+.product-template .toc-item.active {
+  background: #5dbad7;
+  color: white;
+  opacity: 1;
+}
+.product-template .toc-content {
+  display: none;
+  margin-left: 20px;
+}
+.product-template .toc-content.active {
+  display: block;
+}
+.product-template .color-picker {
+  display: flex;
+  gap: 10px;
+}
+.product-template .color-box {
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+.product-template .font-size-control {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.product-template .font-size-control button {
+  height: 8;
+  width: 8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.product-template .font-size-control button svg {
+  width: 100%;
+  height: 100%;
+}

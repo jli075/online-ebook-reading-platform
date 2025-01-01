@@ -1,0 +1,255 @@
+@import "variable.less";
+@import "nav.less";
+
+body,
+html {
+    font-family: @body-font;
+    margin: 0;
+    padding: 0;
+    background: #f0f0f0;
+    height: 100%;
+    color: #5f6988;
+    scroll-behavior: smooth;
+
+    .container {
+        width: 948px;
+        max-width: 88%;
+        margin: 0 auto;
+        height: fit-content;
+        background: white;
+        padding: 30px 40px;
+        box-shadow: 0 0 5px rgba(65, 67, 144, 0.15);
+
+        @media (max-width: 800px) {
+            width: 82%;
+            margin: 0 auto 20px;
+            padding: 30px 6%;
+        }
+
+        h1 {
+            line-height: 1.5;
+            margin: 0 0 5px;
+        }
+
+        h2 {
+            margin: 0;
+            font-weight: 400;
+            font-size: 1.2em;
+            line-height: 1;
+        }
+
+        a {
+            color: #5dbad7;
+            transition: @transition;
+            text-decoration: none;
+
+            &:hover {
+                cursor: pointer;
+                opacity: .7;
+            }
+        }
+    }
+
+    .resource-links {
+        margin-top: 10px;
+
+        .resource-link {
+            margin: 4px 0;
+            color: #8a91a7;
+            line-height: 1;
+        }
+    }
+
+    .products {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-top: 30px;
+        margin-bottom: 30px;
+
+        .product-preview {
+            padding: 2%;
+            box-shadow: 0 0 5px rgba(65, 67, 144, 0.15);
+            max-width: 28%;
+            width: 30%;
+            background: white;
+            margin-bottom: 20px;
+            display: block;
+            text-align: center;
+            overflow: hidden;
+            transition: @transition;
+
+            &:hover {
+                background: #5dbad7;
+                color: white;
+                opacity: 1;
+
+                .book-title,
+                .author a,
+                .like-counter p,
+                .rating p {
+                    color: white;
+                }
+            }
+
+            .like-counter p,
+            .rating p {
+                color: #5dbad7;
+                transition: @transition;
+                text-decoration: none;
+            }
+
+            .like-button {
+                color: gray;
+
+                &:hover {
+                    opacity: 1;
+
+                    * {
+                        color: red !important;
+                    }
+                }
+            }
+
+            .unlike-button {
+                color: red;
+
+                &:hover {
+                    opacity: 1;
+
+                    * {
+                        color: darkgray !important;
+                    }
+                }
+            }
+
+            .product-image {
+                height: 95px;
+                margin: 0 auto 15px;
+                display: block;
+
+                @media (max-width: 600px) {
+                    width: 90%;
+                    height: unset;
+                }
+            }
+
+            .book-title {
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                display: -webkit-box;
+                width: -webkit-fill-available;
+                width: -moz-available;
+                width: stretch;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-weight: 500;
+                font-size: 1em;
+                line-height: 1.3;
+                height: 60px;
+            }
+
+            .author {
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                display: -webkit-box;
+                width: -webkit-fill-available;
+                width: -moz-available;
+                width: stretch;
+                overflow: hidden;
+                text-overflow: ellipsis;
+
+                font-weight: 600;
+                font-size: 1.1em;
+                line-height: 1.3;
+                text-wrap: pretty;
+                margin-top: 5px;
+                margin-bottom: 5px;
+                height: 60px;
+
+                &:hover {
+                    opacity: 1;
+
+                    * {
+                        color: gray !important;
+                    }
+                }
+            }
+        }
+    }
+
+    .rating {
+        .star {
+            font-size: 24px;
+            color: gray;
+            // Default color for empty stars 
+            display: inline-block;
+            position: relative;
+        }
+
+        .star.filled {
+            color: gold;
+            // Full star color 
+        }
+
+        .star.empty {
+            color: gray;
+            // Empty star color 
+        }
+
+        // Half star implementation 
+        .star.half-filled {
+            background: linear-gradient(to right, gold 50%, gray 50%);
+            -webkit-background-clip: text;
+            // For webkit browsers 
+            background-clip: text;
+            // For modern browsers 
+            color: transparent;
+            // Make text transparent to show the background 
+        }
+    }
+
+    .form-rating {
+        >[id^="star"] {
+            display: none;
+        }
+
+        >label {
+
+            color: #ddd;
+            float: right;
+
+            &::before {
+                margin: 3px;
+                font-size: 1em;
+                font-family: "Font Awesome 5 Free";
+                display: inline-block;
+                content: "\f005"; // Full star content
+            }
+
+            &.half::before {
+                content: "\f089"; // Half star (Font Awesome character)
+                position: absolute;
+            }
+        }
+
+        // Magic to highlight stars on hover
+        >[id^="star"]:checked~label,
+        // Show gold star when clicked
+        &:not(:checked)>label:hover,
+        // Hover on current star
+        &:not(:checked)>label:hover~label {
+            // Hover previous stars in the list
+            color: #FFD700; // Gold color for stars
+        }
+
+        >[id^="star"]:checked+label:hover,
+        // Hover current star when changing rating
+        >[id^="star"]:checked~label:hover,
+        >label:hover~[id^="star"]:checked~label,
+        // Lighten current selection
+        >[id^="star"]:checked~label:hover~label {
+            color: #FFED85; // Lighter gold for stars when hovering over them
+        }
+    }
+}

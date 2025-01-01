@@ -1,0 +1,63 @@
+.profile-template .account-header {
+  display: flex;
+}
+.profile-template .account-header .user-meta {
+  margin-top: 10px;
+}
+.profile-template .account-header .username {
+  line-height: 1;
+  margin-bottom: 10px;
+}
+.profile-template .account-header .user-avatar {
+  height: 128px;
+  border-radius: 3px;
+  margin-right: 25px;
+}
+.profile-template .account-header .user-name {
+  font-size: 1.4em;
+}
+.profile-template .account-header .meta-name {
+  font-weight: 600;
+  width: 88px;
+  display: inline-block;
+}
+.profile-template.page .products {
+  display: none !important;
+}
+.profile-template h2 {
+  margin-bottom: 10pt !important;
+}
+.profile-template .tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  width: auto;
+}
+.profile-template .tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+.profile-template .tab button:hover {
+  background-color: #ddd;
+}
+.profile-template .tab button.active {
+  background-color: #5dbad7;
+  color: white;
+}
+.profile-template .tab-content {
+  display: none;
+}
+.profile-template .custom-info {
+  background-color: #5dbad7;
+  color: white;
+}
+.profile-template .custom-info:hover {
+  background-color: rgba(93, 186, 215, 0.8);
+  color: white;
+}

@@ -1,0 +1,99 @@
+{% from 'bootstrap5/utils.html' import render_static %}
+{% from 'bootstrap5/form.html' import render_field %}
+{% extends "layout.jinja2" %}
+
+{% block pagestyles %}
+{% assets "profile_style_bundle" %}
+{{ render_static('css', ASSET_URL, local=False)}}
+{% endassets %}
+{% endblock %}
+
+{% block content %}
+{% include "navigation.jinja2" %}
+
+<div class="container">
+    <div class="account-header">
+        <table>
+            <tr valign="top">
+                <td><img class="user-avatar" src="{{ user.avatar(128) }}" alt="profile"></td>
+                <td>
+                    <h1 class="username">User: {{ user.username }}</h1>
+                    {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
+                    <p>{{ user.followers_count() }} followers, {{ user.following_count() }} following</p>
+                    {% if user == current_user %}
+                    <p><a href="{{ url_for('profile_blueprint.edit_profile') }}">Edit your profile</a></p>
+                    <button type="button" class="btn custom-info"
+                        onclick="window.location.href='{{ url_for('profile_blueprint.upload_book') }}';">Publish new
+                        book</button>
+
+                    {% elif not current_user.is_following(user) %}
+                    <p>
+                    <form action="{{ url_for('home_blueprint.follow', username=user.username) }}" method="post">
+                        {{ form.hidden_tag() }}
+                        {{ render_field(form.submit, value='Follow')}}
+                    </form>
+                    </p>
+                    {% else %}
+                    <p>
+                    <form action="{{ url_for('home_blueprint.unfollow', username=user.username) }}" method="post">
+                        {{ form.hidden_tag() }}
+                        {{ render_field(form.submit, value='Unfollow')}}
+                    </form>
+                    </p>
+                    {% endif %}
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+<div class="container">
+    <div class="tab">
+        <button class="tablinks active" onclick="showTab(event, 'Published')">Published</button>
+        <button class="tablinks" onclick="showTab(event, 'Liked')">Liked</button>
+        <button class="tablinks" onclick="showTab(event, 'Authors')">Authors</button>
+    </div>
+
+    <div id="Published" class="products tab-content" style="display:flex;">
+        {% for product in posts %}
+        {% include '_product.jinja2' %}
+        {% endfor %}
+    </div>
+
+    <div id="Liked" class="products tab-content" style="display:none;">
+        {% for product in liked %}
+        {% include '_product.jinja2' %}
+        {% endfor %}
+    </div>
+
+    <div id="Authors" class="products tab-content" style="display:none;">
+        {% for author in authors %}
+        {% include '_user.jinja2' %}
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block script %}
+{{ render_static('js', url_for('static', filename='src/js/likeUnlike.js'), local=False) }}
+<script>
+    function showTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "flex";
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+
+{% endblock %}

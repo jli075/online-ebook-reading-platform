@@ -1,0 +1,162 @@
+{% from 'bootstrap5/utils.html' import render_static, render_icon %}
+{% from 'bootstrap5/form.html' import render_form %}
+
+{% extends "layout.jinja2" %}
+
+{% block head %}
+
+{{ super() }}
+
+
+{{ render_static('js', 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js', local=False)}}
+{{ render_static('css', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css', local=False)}}
+
+{% endblock %}
+
+{% block pagestyles %}
+{% assets "product_style_bundle" %}
+{{ render_static('css', ASSET_URL, local=False)}}
+{% endassets %}
+
+{% endblock %}
+
+
+{% block content %}
+{% include "navigation.jinja2" %}
+
+
+<div id="bookfile" class="{{product.id}}" hidden></div>
+<div id="title"><h3>{{title}}</h3></div>
+<!-- <select id="toc"></select> -->
+
+
+<div class="app-container">
+    <!-- <div class="main-layout"> -->
+    <div class="activity-bar">
+        <div class="activity">
+            <ul class="action-bar">
+                <li><button class="action" onclick="toggleSidebar('toc', this)">{{render_icon("list",
+                        title="TOC")}}</button></li>
+                <li><button class="action" onclick="toggleSidebar('analytics', this)">{{render_icon("graph-up",
+                        title="Analytics")}}</button></li>
+                <li><button class="action" onclick="toggleSidebar('typography', this)">{{render_icon("type",
+                        title="Typography")}}</button></li>
+                <li><button class="action" onclick="toggleSidebar('theme', this)">{{render_icon("sun",
+                        title="Theme")}}</button></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="sidebar" id="sidebar" style="display:none;">
+        <div class="sidebarContent" id="toc" style="display:none;">
+            <h2>TOC</h2>
+        </div>
+        <div class="sidebarContent" id="analytics" style="display:none;">
+            <h2>Analytics</h2>
+            <div class="heart-icon">
+                {% if not current_user.is_anonymous %}
+                {% if current_user.has_liked_book(product) %}
+                <a class="unlike-button" href="#"
+                    data-like-url='{{ url_for("home_blueprint.like_action", book_id=product.id, action="unlike") }}'
+                    onclick="likeUnlike(event, this)">
+                    {{ render_icon("heart-fill", color="red") }}
+                </a>
+                {% else %}
+                <a class="like-button" href="#"
+                    data-like-url='{{ url_for("home_blueprint.like_action", book_id=product.id, action="like") }}'
+                    onclick="likeUnlike(event, this)">
+                    {{ render_icon("heart", color="gray") }}
+                </a>
+                {% endif %}
+
+                {% endif %}
+            </div>
+            <div class="like-counter" id="like-count-{{ product.id }}" like-count='{{ product.likes.count() }}'>
+                {% if product.likes.count() == 1 %}
+                <p>{{ product.likes.count() }} like</p>
+                {% else %}
+                <p>{{ product.likes.count() }} likes</p>
+                {% endif %}
+            </div>
+            {% if not current_user.is_anonymous %}
+            {{render_form(form)}}
+            {% else %}
+            <div class="rating">
+                {% set full_stars = product.rating|round(1) %}
+                {% for i in range(1, 6) %}
+                {% if i <= full_stars %} <span class="star filled">★</span> <!-- Full star -->
+                    {% elif i - 0.5 == full_stars %}
+                    <span class="star half-filled">★</span> <!-- Half star -->
+                    {% else %}
+                    <span class="star empty">★</span> <!-- Empty star -->
+                    {% endif %}
+                    {% endfor %}
+                    
+            </div>
+            {% endif %}
+            <p id="avg-rating">Average Rating: {{ product.rating }}</p>
+        </div>
+        <div class="sidebarContent" id="typography" style="display:none;">
+            <h2>Typography</h2>
+            <div class="controls">
+                <label for="pageView">Page View</label>
+                <select id="pageView" , name="pageView">
+                    <option value="none">Single Page</option>
+                    <option value="auto" selected>Double Page</option>
+                </select>
+            </div>
+            <div class="controls">
+                <label for="fontFamily">Font Family</label>
+                <select id="fontFamily" , name="fontFamily">
+                    <option value="default" selected>default</option>
+                    <option value="sans-serif" style="font-family: sans-serif;">sans-serif</option>
+                    <option value="serif" style="font-family: serif;">serif</option>
+                </select>
+            </div>
+            <div class="controls">
+                <label for="fontSize">Font Size</label>
+
+                <div class="font-size-control">
+                    <input id="fontsize" type="number" placeholder="default" min="14" max="28">
+                    <button id="stepdown" title="Step Down">{{render_icon("dash")}}</button>
+                    <button id="stepup" title="Step Up">{{render_icon("plus")}}</button>
+                    <button id="clear" title="Clear">{{render_icon("x")}}</button>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="sidebarContent" id="theme" style="display:none;">
+            <div class="color-picker">
+                <div class="color-box" style="background-color: white;" data-color="light"></div>
+                <div class="color-box" style="background-color: tan;" data-color="tan"></div>
+                <div class="color-box" style="background-color: black;" data-color="dark"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-area">
+        <div class="pane-container active">
+            <div id="viewer" class="spreads"></div>
+            <a id="prev" class="arrow" href="#prev">‹</a>
+            <a id="next" class="arrow" href="#next">›</a>
+        </div>
+        <!-- <div class="footer">
+            <span>Page 1 of 10</span>
+            <span>Current Book Title</span>
+        </div> -->
+    </div>
+
+
+
+</div>
+
+{% endblock %}
+
+
+
+{% block script %}
+{{ render_static('js', url_for('static', filename='src/js/epub.min.js'), local=False) }}
+{{ render_static('js', url_for('static', filename='src/js/book.js'), local=False) }}
+{{ render_static('js', url_for('static', filename='src/js/likeUnlike.js'), local=False) }}
+{% endblock %}

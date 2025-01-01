@@ -1,0 +1,51 @@
+{% from 'bootstrap5/utils.html' import render_icon %}
+
+<div class="product-preview">
+
+    <a href="/products/{{ product.id }}/">
+        <img class="product-image" src="{{ url_for('home_blueprint.cover_data', id=product.id) }}" alt="profile" />
+        <div class="book-title">{{ product.book_title }}</div>
+
+    </a>
+    <div class="author"><a href="/profile/redirect/{{ product.user_id }}">by: {{ product.author }}</a></div>
+    <div class="heart-icon">
+        {% if not current_user.is_anonymous %}
+        {% if current_user.has_liked_book(product) %}
+        <a class="unlike-button" href="#"
+            data-like-url='{{ url_for("home_blueprint.like_action", book_id=product.id, action="unlike") }}'
+            onclick="likeUnlike(event, this)">
+            {{ render_icon("heart-fill", color="red") }}
+        </a>
+        {% else %}
+        <a class="like-button" href="#"
+            data-like-url='{{ url_for("home_blueprint.like_action", book_id=product.id, action="like") }}'
+            onclick="likeUnlike(event, this)">
+            {{ render_icon("heart", color="gray") }}
+        </a>
+        {% endif %}
+
+        {% endif %}
+    </div>
+    <div class="like-counter" id="like-count-{{ product.id }}" like-count='{{ product.likes.count() }}'>
+        {% if product.likes.count() == 1 %}
+        <p>{{ product.likes.count() }} like</p>
+        {% else %}
+        <p>{{ product.likes.count() }} likes</p>
+        {% endif %}
+    </div>
+    <div class="rating">
+        {% set full_stars = product.rating|round(1) %}
+
+        {% for i in range(1, 6) %}
+            {% if i <= full_stars %} 
+                <span class="star filled">★</span> <!-- Full star -->
+            {% elif i - 0.5 == full_stars %}
+                <span class="star half-filled">★</span> <!-- Half star -->
+            {% else %}
+                <span class="star empty">★</span> <!-- Empty star -->
+            {% endif %}
+        {% endfor %}
+            <p id="avg-rating">Average Rating: {{ product.rating }}</p>
+    </div>
+
+</div>

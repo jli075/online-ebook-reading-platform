@@ -1,0 +1,29 @@
+{% from 'bootstrap5/utils.html' import render_static %}
+{% extends "layout.jinja2" %}
+
+{% block pagestyles %}
+{% assets "home_style_bundle" %}
+{{ render_static('css', ASSET_URL, local=False)}}
+{% endassets %}
+{% endblock %}
+
+
+{% block content %}
+{% include "navigation.jinja2" %}
+
+<div class="container">
+    <h1>{{ title }}</h1>
+    <h2>{{ subtitle }}</h2>
+
+    <div class="products">
+        {% for product in products %}
+        {% include '_product.jinja2' %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+
+{% block script %}
+{{ render_static('js', url_for('static', filename='src/js/likeUnlike.js'), local=False) }}
+{% endblock %}

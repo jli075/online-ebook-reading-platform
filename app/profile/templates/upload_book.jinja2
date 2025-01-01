@@ -1,0 +1,75 @@
+{% from 'bootstrap5/utils.html' import render_static %}
+{% from 'bootstrap5/form.html' import render_form %}
+{% extends "layout.jinja2" %}
+
+
+
+{% block head %}
+
+{{ super() }}
+
+{{ render_static('js', 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js', local=False)}}
+
+{% endblock %}
+
+
+{% block pagestyles %}
+{% assets "profile_style_bundle" %}
+{{ render_static('css', ASSET_URL, local=False)}}
+{% endassets %}
+{% endblock %}
+
+{% block content %}
+
+{% include "navigation.jinja2" %}
+<div class="container">
+    <h1>Upload Book</h1>
+    <!-- Separate buttons -->
+    <div class="mb-3">
+        <!-- Auto-Fill Button -->
+        <button type="button" class="btn custom-info" id="autofill-button" onclick="autofill()">Autofill
+            Metadata</button>
+    </div>
+
+    <!-- Render form using the Bootstrap-Flask render_form macro -->
+    <div class="mb-3">
+        {{ render_form(form, id="epub-upload-form") }}
+    </div>
+
+</div>
+
+{% endblock %}
+
+
+{% block script %}
+{{ render_static('js', url_for('static', filename='src/js/epub.min.js'), local=False) }}
+<script>
+    async function autofill() {
+        const epubFileInput = document.getElementById('epub_file');
+        if (epubFileInput.files.length === 0) {
+            alert('Please select an EPUB file first.');
+            return;
+        }
+
+        var book = ePub(epubFileInput.files[0]);
+
+        book.ready.then(async () => {
+            document.getElementById('title').value = book.package.metadata.title;
+            document.getElementById('author').value = book.package.metadata.creator;
+            document.getElementById('publication_date').value = book.package.metadata.pubdate;
+
+
+            // Fill cover image
+            var cover_data = await book.coverUrl();
+            var response = await fetch(cover_data);
+            const data = await response.blob();
+
+            var cover_image = new File([data], book.cover.split("/").pop(), { type: data.type });
+            var cover_input = document.getElementById("cover_image");
+            const dataTransfer = new DataTransfer();
+            dataTransfer.items.add(cover_image);
+            cover_input.files = dataTransfer.files;
+        });
+    }
+</script>
+{% endblock %}

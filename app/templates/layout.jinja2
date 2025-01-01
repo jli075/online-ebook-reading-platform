@@ -1,0 +1,25 @@
+{% from 'bootstrap5/utils.html' import render_static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block head %}
+    <meta charset="utf-8" />
+    <meta name="theme-color" content="#5eb9d7" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>{{ title }}</title>
+    {{ render_static('css', url_for('static', filename='dist/css/style.css'), local=False) }}
+
+    {{ bootstrap.load_css() }}
+    {% block pagestyles %}{% endblock %}
+    {% endblock %}
+</head>
+
+<body class="{{ template }}">
+    {% block content %}{% endblock %}
+</body>
+
+
+{% block script %}{% endblock %}
+
+</html>

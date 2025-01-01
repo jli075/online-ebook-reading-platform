@@ -1,0 +1,348 @@
+nav {
+  background: #fff;
+  padding: 20px 0;
+  margin-bottom: 40px;
+  box-shadow: 0 0 5px #bec6cf;
+}
+nav .nav-wrapper {
+  width: 985px !important;
+  max-width: 88% !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto !important;
+}
+nav .nav-wrapper .left-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav .nav-wrapper .left-nav a {
+  margin-right: 40px;
+}
+@media (max-width: 600px) {
+  nav .nav-wrapper .left-nav a {
+    margin-right: 25px !important;
+  }
+}
+nav .nav-wrapper .left-nav img {
+  width: 50px;
+  margin-right: 0;
+}
+nav .nav-wrapper a {
+  font-weight: 600;
+  color: #7d849a;
+}
+@media (max-width: 600px) {
+  nav .nav-wrapper a {
+    font-size: 0.95em;
+  }
+}
+nav a {
+  color: #4d545d;
+  transition: all 0.2s ease-out;
+  text-decoration: none;
+  font-size: 1.1em;
+}
+nav a:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+nav {
+  background: #fff;
+  padding: 20px 0;
+  margin-bottom: 40px;
+  box-shadow: 0 0 5px #bec6cf;
+}
+nav .nav-wrapper {
+  width: 985px !important;
+  max-width: 88% !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto !important;
+}
+nav .nav-wrapper .left-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav .nav-wrapper .left-nav a {
+  margin-right: 40px;
+}
+@media (max-width: 600px) {
+  nav .nav-wrapper .left-nav a {
+    margin-right: 25px !important;
+  }
+}
+nav .nav-wrapper .left-nav img {
+  width: 50px;
+  margin-right: 0;
+}
+nav .nav-wrapper a {
+  font-weight: 600;
+  color: #7d849a;
+}
+@media (max-width: 600px) {
+  nav .nav-wrapper a {
+    font-size: 0.95em;
+  }
+}
+nav a {
+  color: #4d545d;
+  transition: all 0.2s ease-out;
+  text-decoration: none;
+  font-size: 1.1em;
+}
+nav a:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+body,
+html {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f0f0f0;
+  height: 100%;
+  color: #5f6988;
+  scroll-behavior: smooth;
+}
+body .container,
+html .container {
+  width: 948px;
+  max-width: 88%;
+  margin: 0 auto;
+  height: fit-content;
+  background: white;
+  padding: 30px 40px;
+  box-shadow: 0 0 5px rgba(65, 67, 144, 0.15);
+}
+@media (max-width: 800px) {
+  body .container,
+  html .container {
+    width: 82%;
+    margin: 0 auto 20px;
+    padding: 30px 6%;
+  }
+}
+body .container h1,
+html .container h1 {
+  line-height: 1.5;
+  margin: 0 0 5px;
+}
+body .container h2,
+html .container h2 {
+  margin: 0;
+  font-weight: 400;
+  font-size: 1.2em;
+  line-height: 1;
+}
+body .container a,
+html .container a {
+  color: #5dbad7;
+  transition: all 0.2s ease-out;
+  text-decoration: none;
+}
+body .container a:hover,
+html .container a:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+body .resource-links,
+html .resource-links {
+  margin-top: 10px;
+}
+body .resource-links .resource-link,
+html .resource-links .resource-link {
+  margin: 4px 0;
+  color: #8a91a7;
+  line-height: 1;
+}
+body .products,
+html .products {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+body .products .product-preview,
+html .products .product-preview {
+  padding: 2%;
+  box-shadow: 0 0 5px rgba(65, 67, 144, 0.15);
+  max-width: 28%;
+  width: 30%;
+  background: white;
+  margin-bottom: 20px;
+  display: block;
+  text-align: center;
+  overflow: hidden;
+  transition: all 0.2s ease-out;
+}
+body .products .product-preview:hover,
+html .products .product-preview:hover {
+  background: #5dbad7;
+  color: white;
+  opacity: 1;
+}
+body .products .product-preview:hover .book-title,
+html .products .product-preview:hover .book-title,
+body .products .product-preview:hover .author a,
+html .products .product-preview:hover .author a,
+body .products .product-preview:hover .like-counter p,
+html .products .product-preview:hover .like-counter p,
+body .products .product-preview:hover .rating p,
+html .products .product-preview:hover .rating p {
+  color: white;
+}
+body .products .product-preview .like-counter p,
+html .products .product-preview .like-counter p,
+body .products .product-preview .rating p,
+html .products .product-preview .rating p {
+  color: #5dbad7;
+  transition: all 0.2s ease-out;
+  text-decoration: none;
+}
+body .products .product-preview .like-button,
+html .products .product-preview .like-button {
+  color: gray;
+}
+body .products .product-preview .like-button:hover,
+html .products .product-preview .like-button:hover {
+  opacity: 1;
+}
+body .products .product-preview .like-button:hover *,
+html .products .product-preview .like-button:hover * {
+  color: red !important;
+}
+body .products .product-preview .unlike-button,
+html .products .product-preview .unlike-button {
+  color: red;
+}
+body .products .product-preview .unlike-button:hover,
+html .products .product-preview .unlike-button:hover {
+  opacity: 1;
+}
+body .products .product-preview .unlike-button:hover *,
+html .products .product-preview .unlike-button:hover * {
+  color: darkgray !important;
+}
+body .products .product-preview .product-image,
+html .products .product-preview .product-image {
+  height: 95px;
+  margin: 0 auto 15px;
+  display: block;
+}
+@media (max-width: 600px) {
+  body .products .product-preview .product-image,
+  html .products .product-preview .product-image {
+    width: 90%;
+    height: unset;
+  }
+}
+body .products .product-preview .book-title,
+html .products .product-preview .book-title {
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  width: -webkit-fill-available;
+  width: -moz-available;
+  width: stretch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+  font-size: 1em;
+  line-height: 1.3;
+  height: 60px;
+}
+body .products .product-preview .author,
+html .products .product-preview .author {
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  width: -webkit-fill-available;
+  width: -moz-available;
+  width: stretch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 600;
+  font-size: 1.1em;
+  line-height: 1.3;
+  text-wrap: pretty;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  height: 60px;
+}
+body .products .product-preview .author:hover,
+html .products .product-preview .author:hover {
+  opacity: 1;
+}
+body .products .product-preview .author:hover *,
+html .products .product-preview .author:hover * {
+  color: gray !important;
+}
+body .rating .star,
+html .rating .star {
+  font-size: 24px;
+  color: gray;
+  display: inline-block;
+  position: relative;
+}
+body .rating .star.filled,
+html .rating .star.filled {
+  color: gold;
+}
+body .rating .star.empty,
+html .rating .star.empty {
+  color: gray;
+}
+body .rating .star.half-filled,
+html .rating .star.half-filled {
+  background: linear-gradient(to right, gold 50%, gray 50%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+body .form-rating > [id^="star"],
+html .form-rating > [id^="star"] {
+  display: none;
+}
+body .form-rating > label,
+html .form-rating > label {
+  color: #ddd;
+  float: right;
+}
+body .form-rating > label::before,
+html .form-rating > label::before {
+  margin: 3px;
+  font-size: 1em;
+  font-family: "Font Awesome 5 Free";
+  display: inline-block;
+  content: "\f005";
+}
+body .form-rating > label.half::before,
+html .form-rating > label.half::before {
+  content: "\f089";
+  position: absolute;
+}
+body .form-rating > [id^="star"]:checked ~ label,
+html .form-rating > [id^="star"]:checked ~ label,
+body .form-rating:not(:checked) > label:hover,
+html .form-rating:not(:checked) > label:hover,
+body .form-rating:not(:checked) > label:hover ~ label,
+html .form-rating:not(:checked) > label:hover ~ label {
+  color: #FFD700;
+}
+body .form-rating > [id^="star"]:checked + label:hover,
+html .form-rating > [id^="star"]:checked + label:hover,
+body .form-rating > [id^="star"]:checked ~ label:hover,
+html .form-rating > [id^="star"]:checked ~ label:hover,
+body .form-rating > label:hover ~ [id^="star"]:checked ~ label,
+html .form-rating > label:hover ~ [id^="star"]:checked ~ label,
+body .form-rating > [id^="star"]:checked ~ label:hover ~ label,
+html .form-rating > [id^="star"]:checked ~ label:hover ~ label {
+  color: #FFED85;
+}
+

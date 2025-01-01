@@ -1,0 +1,53 @@
+[
+    {
+        "file_name": "pg74431-images-3.epub", 
+        "book_title": "The Wampanoags in the seventeenth century : An ethnohistorical survey",
+        "author": "Catherine Marten",
+        "cover_image": "pg74431.cover.medium.jpg"
+        
+    },
+    {
+        "file_name": "pg84-images-3.epub", 
+        "book_title": "Frankenstein; Or, The Modern Prometheus",
+        "author": "Mary Wollstonecraft Shelley",
+        "cover_image": "pg84.cover.medium.jpg"
+        
+    },
+    {
+        "file_name": "pg1342-images-3.epub", 
+        "book_title": "Pride and Prejudice",
+        "author": "Jane Austen",
+        "cover_image": "pg1342.cover.medium.jpg"
+        
+    },
+    {
+        "file_name": "pg1513-images-3.epub", 
+        "book_title": "Romeo and Juliet",
+        "author": "William Shakespeare",
+        "cover_image": "pg1513.cover.medium.jpg"
+    },
+    {
+        "file_name": "pg2701-images-3.epub", 
+        "book_title": "Moby Dick; Or, The Whale",
+        "author": "Herman Melville",
+        "cover_image": "pg2701.cover.medium.jpg"
+    },
+    {
+        "file_name": "pg25344-images-3.epub", 
+        "book_title": "The Scarlet Letter",
+        "author": "Nathaniel Hawthorne",
+        "cover_image": "pg25344.cover.medium.jpg"
+    },
+    {
+        "file_name": "pg11-images-3.epub", 
+        "book_title": "Alice's Adventures in Wonderland",
+        "author": "Lewis Carroll",
+        "cover_image": "pg11.cover.medium.jpg"
+    },
+    {
+        "file_name": "moby-dick.epub", 
+        "book_title": "Moby Dick; Or, The Whale",
+        "author": "Herman Melville",
+        "cover_image": "md-cover.jpg"
+    }
+]
